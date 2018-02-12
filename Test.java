@@ -43,7 +43,7 @@ public class Test {
 
 		// Έχουμε δημιουργήσει πίνακες με αντικείμενα πόλεις και ξενοδοχεία.
 
-		
+
 		while (true){
 			System.out.println("\n------ Welcome to our DMST Marvelous Travel Agency ------");
 			System.out.println("1. Display all destinations");
@@ -81,8 +81,8 @@ public class Test {
 												 }
 											}
 								    }
-		
-	
+
+
 
  else if (choice == 3 ){
 			     if(City.counter <9){
@@ -104,3 +104,46 @@ public class Test {
 		  }
 		       else System.out.println("No available space for new country ");//αν δεν βρεθεί κενή θεση στον πίνακα εμφανίζεται σχετικό μήνυμα στην οθόνη
 	  }
+	    else if (choice == 4){
+	  				double max=0;//ορίζουμε τη μεταβλητή max που θα "συγκρίνει τις τιμές ώστε να καταλήξει στην μεγαλύτερη τιμή
+	  				  for(int i=0; i<Hotel.hotels.length; i++){//για κάθε  hotel
+	  					if(Hotel.hotels[i]!= null && Hotel.hotels[i].getAverageCost()> max){/*αν υπάρχει αντικείμενο hotel στη συγκεκριμένη θέση του πίνακα,
+	  					                                                                    *με κόστος μεγαλύτερο από την τιμη του max
+	  					                                                                    */
+	  						max=Hotel.hotels[i].getAverageCost();//η νέα τιμη του max ισούται με την τιμή  του ξενοδοχείου.
+	  					}
+	  			}
+	  			/*Η συγκριση με την τιμή του max, η οποία αλλάζει αν συγκρίνεται με μεγαλύτερες τιμές συνεχίζει μέχρι να περάσει τη διαδικασία αυτή κάθε αντικείμενο
+	  			*του πίνακα(διαφορο του null).Τελικά θα μείνει η μέγιστη τιμή.
+	  			*/
+	  						for(int y=0; y<Hotel.hotels.length; y++){
+	  							if(Hotel.hotels[y]!= null){
+	  								if (max==Hotel.hotels[y].getAverageCost()){//ώστε να εμφανιστούν τα ξενοδοχεία με την μέγιστη τιμή διαμονής
+	  						           System.out.println(Hotel.hotels[y].toString());
+	  							}
+	  						}
+	  					}
+	  				}
+
+	  			else if (choice == 5){
+	  			    System.out.print("Insert index: ");//Δηλώνεται η θέση του πίνακα , η οποία ταυτίζεται με τη στατική μεταβλητή code(για ευκολία του χρήστη)
+	  				int index=scanner.nextInt();
+	  				    if (Hotel.hotels[index]==null){
+	  				       System.out.println( "No hotel is stored in this index!" );//ο αριθμός αντιστοιχεί σε κενή θέση πίνακα
+	  			   }
+	  				    else {
+	  					   System.out.println("Your search for hotels stored in index  "+index+":"+Hotel.hotels[index].getName());//δίνεται το όνομα του ξενοδοχείου
+	  				       System.out.println("New price :");
+	  				       double newPrice=scanner.nextDouble();//ο χρήστης δίνει τη νέα τιμή
+	  					   Hotel.hotels[index].setAverageCost(newPrice);//η νέα τιμή μέσω της μεθόδου set δίνεται στο ξενοδοχείο(έλεγχος καταλληλότητας εντός μεθόδου)
+	  					   System.out.println( Hotel.hotels[index].toString());//εμφάνιση του αντικειμένου
+	  					  }
+
+	  		}
+	  			else {
+	  			System.out.println("wrong input");//για εισαγωγή αριθμού από το χρήστη εκτός των διαθέσιμων επιλογών του μενού
+	  			System.out.println("------------------\n");
+	  		}
+	  	  }
+	     }
+     }
