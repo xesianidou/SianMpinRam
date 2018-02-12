@@ -42,8 +42,45 @@ public class Test {
 
 
 		// Έχουμε δημιουργήσει πίνακες με αντικείμενα πόλεις και ξενοδοχεία.
+
 		
-		
+		while (true){
+			System.out.println("\n------ Welcome to our DMST Marvelous Travel Agency ------");
+			System.out.println("1. Display all destinations");
+			System.out.println("2. Search available hotels  by City's name");
+			System.out.println("3. Create new City");
+			System.out.println("4. Diplay the most expensive hotels");
+			System.out.println("5. Change price of hotels");
+			int choice = scanner.nextInt(); //ο χρήστης θα επιλέξει τον αριθμό που αντιστοιχεί σε κάποια επιλογή του μενού.
+
+			if (choice == 1){
+				System.out.println(" Our Destinations are: ");
+				for (int i=0; i<City.cities.length; i++){//Εκτύπωση όλων των αντικειμένων του πίνακα cities(δεν είναι γεμάτος ο πίνακας)
+					if (City.cities[i]!= null)//αν υπάρχει αντικείμενο στη θέση
+						System.out.println(City.cities[i].toString());
+				}
+			}
+			else if (choice == 2 ){
+					System.out.println("Please write the city : ");//Αναζήτηση hotel με βάση τη μεταβλητή στιγμιοτύπου name του αντικειμένου τύπου City.
+					String choice2=scanner.next();//ο χρήστης μας δηλώνει την πόλη επιλογής του
+					int hotelcounter=0; //αρχικά μετραμε τα ξενοδοχεία που βρίσκονται στην πόλη αναζήτησης με τον μετρητη hotelcounter
+						for(int y=0; y<Hotel.hotels.length; y++){
+							 if(Hotel.hotels[y]!= null){//αν υπάρχει αντικείμενο στη θέση του πίνακα
+								if (choice2.equals(Hotel.hotels[y].getCity().getName())){ /*άμα η πόλη επιλογής ταυτίζεται με τη μεταβλητή στιγμιοτύπου name
+									                                                      *του αντικειμένου τύπου City
+									                                                      */
+
+									hotelcounter++;// τότε ο μετρητής hotelcounter αυξάνεται
+											}
+										}
+								}
+										System.out.println(hotelcounter+" hotels were found");//εμφάνιση του αριθμού των ξενοδοχείων που βρέθηκαν
+										   for(int y=0; y<Hotel.hotels.length; y++){
+											  if(Hotel.hotels[y]!= null && choice2.equals(Hotel.hotels[y].getCity().getName())){
+											     System.out.println(Hotel.hotels[y].toString());//εμφάνιση των αντικειμένων τύπου Hotel που αντιστοιχούνστην επιλογή
+												 }
+											}
+								    }
 		
 	
 
